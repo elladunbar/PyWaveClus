@@ -4,8 +4,12 @@ from spclustering import SPC, plot_temperature_plot
 import yaml
 import os
 
-def load_clustering_config():
-    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.yaml')
+def load_clustering_config(config_file=None):
+    file_path = (
+        config_file
+        if config_file
+        else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.yaml')
+    )
     with open(file_path, 'r') as config_file:
         config = yaml.safe_load(config_file)
         return config['clustering']

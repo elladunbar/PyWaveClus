@@ -3,16 +3,12 @@ import numpy as np
 from scipy.interpolate import splrep, splev
 import os 
 
-def load_waveform_extraction_config(config_file='config.yaml'):
-    """Load waveform extraction configuration from a YAML file.
-
-    Args:
-        config_file (str): Path to the YAML configuration file. Default is 'config.yaml'.
-
-    Returns:
-        dict: A dictionary containing the waveform extraction configuration parameters.
-    """
-    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.yaml')
+def load_waveform_extraction_config(config_file=None):
+    file_path = (
+        config_file
+        if config_file
+        else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.yaml')
+    )
     with open(file_path, 'r') as config_file:
         config = yaml.safe_load(config_file)
         return config['extract_waveform']
