@@ -59,7 +59,11 @@ def haar_feature_extraction_for_channel(spikes, level, ls, max_inputs, min_input
     if len(all_above1) >= 2:
         aux2 = np.diff(all_above1)
         temp_bla = np.convolve(aux2, np.array([1, 1, 1]) / 3)
-        temp_bla = temp_bla[1:len(aux2)-1]
+        # original library has `temp_bla = temp_bla[1:len(aux2)-1]`
+        # this caused errors when `aux2` had length 2
+        # fixed to make endpoints match up still
+        # i believe this matches original intention while fixing the error
+        temp_bla = temp_bla[1:len(aux2)+1]
         temp_bla[0] = aux2[0]
         temp_bla[-1] = aux2[-1]
 
