@@ -14,7 +14,7 @@ def load_waveform_extraction_config(config_file=None):
         return config['extract_waveform']
 
 
-def extract_waveforms(results, recording_bp2, config_file='config.yaml'):
+def extract_waveforms(results, recording_bp2, *, config_file=None):
     """Extracts waveforms for detected spikes in all channels.
 
     Args:

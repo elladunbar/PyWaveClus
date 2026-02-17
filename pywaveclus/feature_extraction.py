@@ -109,8 +109,8 @@ def pca_feature_extraction_for_channel(spikes, n_components=10):
 
     return inspk_pca
 
-def feature_extraction(waveforms):
-    config = load_feature_extraction_config()
+def feature_extraction(waveforms, *, config_file=None):
+    config = load_feature_extraction_config(config_file)
     method = config['method']
 
     if method == 'haar':

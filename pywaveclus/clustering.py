@@ -14,8 +14,8 @@ def load_clustering_config(config_file=None):
         config = yaml.safe_load(config_file)
         return config['clustering']
 
-def SPC_clustering(features):
-    config = load_clustering_config()
+def SPC_clustering(features, *, config_file=None):
+    config = load_clustering_config(config_file)
     min_clus = config['min_clus']
     plot_temperature = config['plot_temperature']
 
